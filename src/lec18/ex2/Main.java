@@ -1,4 +1,4 @@
-package lec17.ex2;
+package lec18.ex2;
 
 import javax.swing.*;
 

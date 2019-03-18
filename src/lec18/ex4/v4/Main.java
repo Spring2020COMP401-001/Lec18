@@ -1,9 +1,11 @@
-package lec17.ex4.v2;
+package lec18.ex4.v4;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,9 +23,23 @@ public class Main {
 		main_panel.setLayout(new BorderLayout());
 
 		ColorChooser color_chooser = new ColorChooser();		
+		
+		color_chooser.addChangeListener(new ColorWatcher());
+		
 		main_panel.add(color_chooser, BorderLayout.CENTER);
 		
 		main_frame.pack();
 		main_frame.setVisible(true);
 	}
+}
+
+class ColorWatcher implements ChangeListener {
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		ColorChooser chooser = (ColorChooser) e.getSource();
+		
+		System.out.println("You changed the color to: " + chooser.getColor().toString());
+	}
+	
 }

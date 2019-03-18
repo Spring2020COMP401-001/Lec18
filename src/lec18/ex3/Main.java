@@ -1,4 +1,4 @@
-package lec17.ex3;
+package lec18.ex3;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

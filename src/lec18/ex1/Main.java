@@ -1,4 +1,4 @@
-package lec17.ex1;
+package lec18.ex1;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
