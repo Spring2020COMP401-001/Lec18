@@ -1,4 +1,4 @@
-package lec18.ex4.v2;
+package lec16.ex4.v1;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,16 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-public class ColorChooser extends JPanel implements ChangeListener {
+public class ColorChooser extends JPanel {
 
-	Color color;
-	JSlider red_slider;
-	JSlider green_slider;
-	JSlider blue_slider;
-	JLabel color_label;
+	private Color color;
+	private JSlider red_slider;
+	private JSlider green_slider;
+	private JSlider blue_slider;
+	private JLabel color_label;
 	
 	public ColorChooser(Color init_color) {
 		color = init_color;
@@ -32,9 +30,10 @@ public class ColorChooser extends JPanel implements ChangeListener {
 		green_slider = new JSlider(0, 255, init_color.getGreen());
 		blue_slider = new JSlider(0, 255, init_color.getBlue());
 
-		red_slider.setPreferredSize(new Dimension(200, 20));
-		green_slider.setPreferredSize(new Dimension(200, 20));
-		blue_slider.setPreferredSize(new Dimension(200, 20));
+		Dimension slider_dim = new Dimension(200,20);
+		red_slider.setPreferredSize(slider_dim);
+		green_slider.setPreferredSize(slider_dim);
+		blue_slider.setPreferredSize(slider_dim);
 		
 		slider_panel.add(red_slider);
 		slider_panel.add(green_slider);
@@ -49,10 +48,6 @@ public class ColorChooser extends JPanel implements ChangeListener {
 		color_label.setHorizontalAlignment(SwingConstants.CENTER);
 
 		add(color_label, BorderLayout.CENTER);
-		
-		red_slider.addChangeListener(this);
-		green_slider.addChangeListener(this);
-		blue_slider.addChangeListener(this);
 	}
 	
 	public ColorChooser() {
@@ -61,14 +56,5 @@ public class ColorChooser extends JPanel implements ChangeListener {
 	
 	public Color getColor() {
 		return color;
-	}
-
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		color = new Color(red_slider.getValue(),
-				          green_slider.getValue(),
-				          blue_slider.getValue());
-		color_label.setText(color.toString());
-		color_label.setBackground(color);
 	}
 }
