@@ -1,9 +1,11 @@
-package lec16.ex4.v2;
+package lec18.ex3.v3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ public class ColorChooser extends JPanel implements ChangeListener {
 	JSlider green_slider;
 	JSlider blue_slider;
 	JLabel color_label;
+	List<ChangeListener> change_listeners;
 	
 	public ColorChooser(Color init_color) {
 		color = init_color;
@@ -53,6 +56,8 @@ public class ColorChooser extends JPanel implements ChangeListener {
 		red_slider.addChangeListener(this);
 		green_slider.addChangeListener(this);
 		blue_slider.addChangeListener(this);
+		
+		change_listeners = new ArrayList<ChangeListener>();
 	}
 	
 	public ColorChooser() {
@@ -70,5 +75,19 @@ public class ColorChooser extends JPanel implements ChangeListener {
 				          blue_slider.getValue());
 		color_label.setText(color.toString());
 		color_label.setBackground(color);
+
+		if (!((JSlider) e.getSource()).getValueIsAdjusting()) {
+			for (ChangeListener l : change_listeners) {
+				l.stateChanged(new ChangeEvent(this));
+			}
+		}
+	}
+	
+	public void addChangeListener(ChangeListener l) {
+		change_listeners.add(l);
+	}
+	
+	public void removeChangeListener(ChangeListener l) {
+		change_listeners.remove(l);
 	}
 }
