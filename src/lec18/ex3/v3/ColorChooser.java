@@ -16,12 +16,12 @@ import javax.swing.event.ChangeListener;
 
 public class ColorChooser extends JPanel implements ChangeListener {
 
-	Color color;
-	JSlider red_slider;
-	JSlider green_slider;
-	JSlider blue_slider;
-	JLabel color_label;
-	List<ChangeListener> change_listeners;
+	private Color color;
+	private JSlider red_slider;
+	private JSlider green_slider;
+	private JSlider blue_slider;
+	private JLabel color_label;
+	private List<ChangeListener> change_listeners;
 	
 	public ColorChooser(Color init_color) {
 		color = init_color;

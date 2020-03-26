@@ -1,4 +1,4 @@
-package lec18.ex1;
+package lec18.scratch;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseListener;
 
 public class Main {
 
@@ -28,9 +29,11 @@ public class Main {
 
 		main_panel.add(hello_world_label, BorderLayout.CENTER);
 
+		MouseListener mlistener = new MouseEventReporter();
+		hello_world_label.addMouseListener(mlistener);
+
 		main_frame.pack();
 		main_frame.setVisible(true);
-		
 		
 		
 	}

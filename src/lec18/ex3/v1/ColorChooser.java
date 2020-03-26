@@ -39,7 +39,7 @@ public class ColorChooser extends JPanel {
 		slider_panel.add(green_slider);
 		slider_panel.add(blue_slider);
 		
-		add(slider_panel, BorderLayout.SOUTH);
+		this.add(slider_panel, BorderLayout.SOUTH);
 		
 		color_label = new JLabel(init_color.toString());
 		color_label.setBackground(this.color);
